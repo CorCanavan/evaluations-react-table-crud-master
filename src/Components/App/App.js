@@ -17,14 +17,6 @@ const App = () => {
   const { loading, error, data } = useQuery(ALL_USERS_QUERY);
   const [allUsersData, setAllUsersData] = useState([])
 
-  // if (loading) {
-  //   return <p>Loading...</p>;
-  // }
-
-  // if (error) {
-  //   return <p>Error: {JSON.stringify(error)}</p>;
-  // }
-
   useEffect(() => {
     console.log("data before if", data)
     if (data) {
