@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.css';
 
 const Header = () => {
-
+  
   return (
     <div>
       <h1>I'm the header!</h1>

@@ -3,6 +3,7 @@ import { gql } from 'apollo-boost';
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Header from '../Header/Header';
+import Container from '../Container/Container';
 
 const ALL_USERS_QUERY = gql`
   query {
@@ -44,6 +45,7 @@ const App = () => {
   return (
     <div>
       <Header />
+      <Container allUsersData={allUsersData} />
     </div>
   )
 }
