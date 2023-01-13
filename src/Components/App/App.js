@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import Header from '../Header/Header';
 
 const ALL_USERS_QUERY = gql`
   query {
@@ -33,12 +34,17 @@ const App = () => {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
 
+  // return (
+  //   <pre>
+  //     <code>
+  //       {JSON.stringify(allUsersData, null, 2)}
+  //     </code>
+  //   </pre>
+  // )
   return (
-    <pre>
-      <code>
-        {JSON.stringify(allUsersData, null, 2)}
-      </code>
-    </pre>
+    <div>
+      <Header />
+    </div>
   )
 }
 
