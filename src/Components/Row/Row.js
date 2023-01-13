@@ -5,9 +5,9 @@ const Row = ({ email, name, role }) => {
 
   return (
     <div className="row">
-      <p>{email}</p>
-      <p>{name}</p>
-      <p>{role}</p>
+      <p className="info">{email}</p>
+      <p className="info">{name}</p>
+      <p className="info">{role}</p>
     </div>
   )
 }

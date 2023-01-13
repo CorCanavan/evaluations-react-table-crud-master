@@ -7,3 +7,9 @@
   display: flex;
   align-items: center;
 }
+
+.delete {
+  border-radius: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Nue", san-serif;
+  border: solid 1px #b8b8b8;
+}

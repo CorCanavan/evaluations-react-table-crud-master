@@ -5,9 +5,9 @@ const Header = () => {
 
   return (
     <header className="header">
-      <h1>I'm the header!</h1>
+      <h1>Users</h1>
         <div className="button-wrapper">
-          <button>Delete</button>
+          <button className="delete">Delete</button>
         </div>
     </header>
   )
