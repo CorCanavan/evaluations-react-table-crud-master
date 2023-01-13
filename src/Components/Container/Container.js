@@ -1,5 +1,6 @@
 import React from 'react';
 import './Container.css';
+import Row from '../Row/Row.js';
 
 const Container = ({ allUsersData }) => {
 
@@ -16,6 +17,7 @@ const Container = ({ allUsersData }) => {
   return (
     <div className="container">
       <p>I'm the container</p>
+      {allUsersRows}
     </div>
   )
 }
