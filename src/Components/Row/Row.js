@@ -4,11 +4,17 @@ import './Row.css';
 const Row = ({ email, name, role }) => {
 
   return (
-    <div className="row">
-      <p className="info">{email}</p>
+    <article className="row">
+      <label className="info">
+        <input 
+          type="checkbox" 
+        />
+        {email}
+      </label>
+      {/* <p className="info">{email}</p> */}
       <p className="info">{name}</p>
       <p className="info">{role}</p>
-    </div>
+    </article>
   )
 }
 
