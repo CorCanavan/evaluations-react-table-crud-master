@@ -2,9 +2,16 @@
   display: flex;
   justify-content: space-between;
   border: 1px solid paleturquoise;
+  align-items: center;
+  /* align-content: center; */
 }
 
 .info {
   font-size: .85em;
   color: #333;
+  display: flex;
+}
+
+input {
+  margin-right: 1.5em;
 }
