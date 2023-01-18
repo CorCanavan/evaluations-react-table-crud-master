@@ -7,6 +7,7 @@ const Container = ({ allUsersData }) => {
   const allUsersRows = allUsersData.map(user => {
     return (
       <Row
+        key={user.email}
         email={user.email}
         name={user.name}
         role={user.role}
