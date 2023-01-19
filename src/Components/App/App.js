@@ -23,7 +23,22 @@ const App = () => {
     console.log("data before if", data)
     if (data) {
       console.log("data after if", data)
-      setAllUsersData(data.allUsers)
+      const formattedData = data.allUsers.map(user => {
+        let splitRole = user.role.split("_")
+        let formattedRole = splitRole.reduce((acc, role) => {
+          let lowercase = role.substring(1).toLowerCase();
+          let newFormat = role[0] + lowercase;
+          acc.push(newFormat)
+          return acc;
+        }, []).join(" ")
+        return {
+          email: user.email,
+          name: user.name,
+          role: formattedRole,
+          typename: user.__typename
+        }
+      })
+      setAllUsersData(formattedData)
     }
   }, [data])
 
