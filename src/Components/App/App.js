@@ -20,14 +20,12 @@ const App = () => {
   const [allUsersData, setAllUsersData] = useState([])
 
   useEffect(() => {
-    console.log("data before if", data)
     if (data) {
-      console.log("data after if", data)
       const formattedData = data.allUsers.map(user => {
-        let splitRole = user.role.split("_")
-        let formattedRole = splitRole.reduce((acc, role) => {
-          let lowercase = role.substring(1).toLowerCase();
-          let newFormat = role[0] + lowercase;
+        const splitRole = user.role.split("_")
+        const formattedRole = splitRole.reduce((acc, role) => {
+          const lowercase = role.substring(1).toLowerCase();
+          const newFormat = role[0] + lowercase;
           acc.push(newFormat)
           return acc;
         }, []).join(" ")
