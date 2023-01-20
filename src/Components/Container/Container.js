@@ -15,21 +15,7 @@ const Container = ({ allUsersData }) => {
     )
   })
 
-  // const allUsersRows = allUsersData.map(user => {
-  //   return (
-  //     <tr key={user.email}>
-  //       <td>{user.email}</td>
-  //       <td>{user.name}</td>
-  //       <td>{user.role}</td>
-  //     </tr>
-  //   )
-  // })
-
   return (
-    // <div className="container">
-    //   <p>I'm the container</p>
-    //   {allUsersRows}
-    // </div>
     <section className="container">
       <table>
         <thead className="header-border">
