@@ -48,18 +48,13 @@ const App = () => {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
 
-  // return (
-  //   <pre>
-  //     <code>
-  //       {JSON.stringify(allUsersData, null, 2)}
-  //     </code>
-  //   </pre>
-  // )
   return (
-    <div>
-      <Header />
-      <Container allUsersData={allUsersData} />
-    </div>
+    <main>
+      <section className="content-container">
+        <Header />
+        <Container allUsersData={allUsersData} />
+      </section>
+    </main>
   )
 }
 

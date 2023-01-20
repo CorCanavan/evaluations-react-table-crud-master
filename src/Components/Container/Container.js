@@ -16,10 +16,20 @@ const Container = ({ allUsersData }) => {
   })
 
   return (
-    <div className="container">
-      <p>I'm the container</p>
-      {allUsersRows}
-    </div>
+    <section className="container">
+      <table>
+        <thead className="header-border">
+          <tr className="column-headers">
+            <th>EMAIL</th>
+            <th>NAME</th>
+            <th>ROLE</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allUsersRows}
+        </tbody>
+      </table>
+    </section>
   )
 }
 

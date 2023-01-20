@@ -1,4 +1,23 @@
 .container {
-  box-sizing: border-box;
-  border: 2px solid green;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  color: #777; 
+  font-size: .8em;
+  font-weight: 500;
+  height: 2.3em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Nue", san-serif;
+}
+
+.header-border {
+  border: 1px solid #e5e5e5;
+  border-left: 0px;
+  border-right: 0px;
 }
