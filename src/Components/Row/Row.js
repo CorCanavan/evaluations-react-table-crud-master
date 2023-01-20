@@ -15,6 +15,7 @@ const Row = ({ email, name, role }) => {
       <p className="info">{name}</p>
       <p className="info">{role}</p>
     </article>
+
   )
 }
 
