@@ -56,10 +56,12 @@ const App = () => {
   //   </pre>
   // )
   return (
-    <div>
-      <Header />
-      <Container allUsersData={allUsersData} />
-    </div>
+    <main>
+      <section className="content-container">
+        <Header />
+        <Container allUsersData={allUsersData} />
+      </section>
+    </main>
   )
 }
 

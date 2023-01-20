@@ -16,9 +16,9 @@ const Row = ({ email, name, role }) => {
     //   <p className="info">{role}</p>
     // </article>
 
-    <tr key={email}>
+    <tr key={email} className="row-wrapper">
       <td>
-        <label>
+        <label className="input-container">
           <input 
             type="checkbox" 
           />
