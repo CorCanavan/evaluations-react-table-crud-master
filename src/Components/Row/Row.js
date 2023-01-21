@@ -5,7 +5,7 @@ const Row = ({ email, name, role }) => {
 
   return (
     <tr key={email} className="row-wrapper">
-      <td>
+      <td className="email">
         <label className="input-container">
           <input 
             type="checkbox" 
