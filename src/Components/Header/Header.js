@@ -7,7 +7,7 @@ const Header = () => {
     <header className="header">
       <h1 className="header-text">Users</h1>
         <div className="button-wrapper">
-          <button className="delete">Delete</button>
+          <button className="delete" disabled>Delete</button>
         </div>
     </header>
   )
