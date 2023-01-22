@@ -18,6 +18,7 @@ const ALL_USERS_QUERY = gql`
 const App = () => {
   const { loading, error, data } = useQuery(ALL_USERS_QUERY);
   const [allUsersData, setAllUsersData] = useState([])
+  const [selectedUser, setSelectedUser] = useState([])
 
   useEffect(() => {
     if (data) {
@@ -50,11 +51,41 @@ const App = () => {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
 
+
+  const handleCheck = (id) => {
+    console.log("checked!")
+    console.log("id", id)
+    // console.log("isChecked", isChecked)
+    const revisedUsers = allUsersData.map (user => {
+      if (user.id === id) {
+        const updatedUser = {
+          ...user,
+          isChecked : !user.isChecked
+        }
+        const toggleSelectedUser = updatedUser.isChecked ? updatedUser : []
+        setSelectedUser(toggleSelectedUser)
+        return updatedUser;
+      } else {
+        return user;
+      }
+    })
+    console.log('revisedUsers', revisedUsers)
+    setAllUsersData(revisedUsers)
+    console.log("hi")
+    // handleSelectedUser();
+  }
+
+  // const handleSelectedUser = () => {
+  //   const filteredByChecked = allUsersData.filter(user => user.isChecked === true)
+  //   console.log("filtered", allUsersData, filteredByChecked)
+  //   setSelectedUser(filteredByChecked)
+  // }
+
   return (
     <main>
       <section className="content-container">
         <Header />
-        <Container allUsersData={allUsersData} />
+        <Container allUsersData={allUsersData} handleCheck={handleCheck} />
       </section>
     </main>
   )
