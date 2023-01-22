@@ -21,7 +21,7 @@ const App = () => {
 
   useEffect(() => {
     if (data) {
-      const formattedData = data.allUsers.map(user => {
+      const formattedData = data.allUsers.map((user, index) => {
         const splitRole = user.role.split("_")
         const formattedRole = splitRole.reduce((acc, role) => {
           const lowercase = role.substring(1).toLowerCase();
@@ -30,10 +30,12 @@ const App = () => {
           return acc;
         }, []).join(" ")
         return {
+          id: index + 1,
           email: user.email,
           name: user.name,
           role: formattedRole,
-          typename: user.__typename
+          typename: user.__typename,
+          isChecked: false
         }
       })
       setAllUsersData(formattedData)
