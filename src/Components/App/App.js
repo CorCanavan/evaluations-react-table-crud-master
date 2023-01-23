@@ -18,7 +18,8 @@ const ALL_USERS_QUERY = gql`
 const App = () => {
   const { loading, error, data } = useQuery(ALL_USERS_QUERY);
   const [allUsersData, setAllUsersData] = useState([])
-  const [selectedUser, setSelectedUser] = useState([])
+  const [selectedUsers, setSelectedUsers] = useState([])
+  // const [isChecked, setIsChecked] = useState('false')
 
   useEffect(() => {
     if (data) {
@@ -51,9 +52,18 @@ const App = () => {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
 
+  const handleSelectedUsers = (revisedUsers) => {
+    console.log("inside handleSelectedUser allUsersData", allUsersData)
+    console.log("inside handleSelectedUser revisedUsers", revisedUsers)
+    const filterByChecked = revisedUsers.filter(user => user.isChecked === true)
+    console.log("filterByChecked", filterByChecked)
+    setSelectedUsers(filterByChecked)
+    console.log(selectedUsers, "selectedUsers", allUsersData, "all inside handleSelected")
+  }
+
   const handleCheck = (id) => {
-    console.log("checked!")
-    console.log("id", id)
+    // console.log("checked!")
+    // console.log("id", id)
     // console.log("isChecked", isChecked)
     const revisedUsers = allUsersData.map (user => {
       if (user.id === id) {
@@ -61,24 +71,27 @@ const App = () => {
           ...user,
           isChecked : !user.isChecked
         }
-        const toggleSelectedUser = updatedUser.isChecked ? updatedUser : []
-        setSelectedUser(toggleSelectedUser)
+        // const toggleSelectedUser = updatedUser.isChecked ? updatedUser : []
+        // setSelectedUser(toggleSelectedUser)
         return updatedUser;
       } else {
         return user;
       }
     })
-    console.log('revisedUsers', revisedUsers)
+    console.log('revisedUsers1 inside handleCheck', revisedUsers)
     setAllUsersData(revisedUsers)
-    console.log("hi")
-    handleSelectedUser();
+    console.log("revisedUsers2 inside handleCheck", revisedUsers)
+    console.log("allUsersData1", allUsersData)
+    handleSelectedUsers(revisedUsers);
+    console.log("allUsers last in function", allUsersData)
   }
 
-  const handleSelectedUser = () => {
-    const filterByChecked = allUsersData.filter(user => user.isChecked === true)
-    console.log("filterByChecked", filterByChecked)
-    setSelectedUser(filterByChecked)
-  }
+  // const handleSelectedUser = () => {
+  //   console.log("inside handleSelectedUser", allUsersData)
+  //   const filterByChecked = allUsersData.filter(user => user.isChecked === true)
+  //   console.log("filterByChecked", filterByChecked)
+  //   setSelectedUser(filterByChecked)
+  // }
 
   // const handleCheck = (id) => {
   //   console.log("checked!")
