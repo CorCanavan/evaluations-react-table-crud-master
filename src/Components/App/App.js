@@ -86,44 +86,17 @@ const App = () => {
     console.log("allUsers last in function", allUsersData)
   }
 
-  // const handleSelectedUser = () => {
-  //   console.log("inside handleSelectedUser", allUsersData)
-  //   const filterByChecked = allUsersData.filter(user => user.isChecked === true)
-  //   console.log("filterByChecked", filterByChecked)
-  //   setSelectedUser(filterByChecked)
-  // }
+  // deleteUser 
+    // pass in selectedUsers 
+      // forEach user, find in state and splice out 
 
-  // const handleCheck = (id) => {
-  //   console.log("checked!")
-  //   console.log("id", id)
-  //   // console.log("isChecked", isChecked)
-  //   const revisedUsers = allUsersData.reduce ((acc, user) => {
-  //     if (user.id === id) {
-  //       const updatedUser = {
-  //         ...user,
-  //         isChecked : !user.isChecked
-  //       }
-  //       // const toggleSelectedUser = updatedUser.isChecked ? updatedUser : []
-  //       // setSelectedUser(toggleSelectedUser)
-  //       // return updatedUser;
-  //       acc.push(updatedUser)
-  //     } else {
-  //       return user;
+  // const deleteUser = (selectedUsers) => {
+  //   selectedUsers.forEach(user => {
+  //     if (allUsersData.includes(user)) {
+  //       allUsersData.splice(user)
   //     }
-  //     console.log("acc", acc)
-  //     return acc;
-  //   }, [])
-  //   console.log('revisedUsers', revisedUsers)
-  //   setAllUsersData(revisedUsers)
-  //   console.log("hi")
-  //   // handleSelectedUser();
-  // }
-
-
-  // const handleSelectedUser = () => {
-  //   const filteredByChecked = allUsersData.filter(user => user.isChecked === true)
-  //   console.log("filtered", allUsersData, filteredByChecked)
-  //   setSelectedUser(filteredByChecked)
+  //     console.log("allUserDataDelete", allUsersData)
+  //   })
   // }
 
   return (
