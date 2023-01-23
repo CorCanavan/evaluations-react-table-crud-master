@@ -51,12 +51,6 @@ const App = () => {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
 
-  const handleSelectedUser = () => {
-    const filterByChecked = allUsersData.filter(user => user.isChecked === true)
-    console.log("filterByChecked", filterByChecked)
-    setSelectedUser(filterByChecked)
-  }
-
   const handleCheck = (id) => {
     console.log("checked!")
     console.log("id", id)
@@ -78,6 +72,12 @@ const App = () => {
     setAllUsersData(revisedUsers)
     console.log("hi")
     handleSelectedUser();
+  }
+
+  const handleSelectedUser = () => {
+    const filterByChecked = allUsersData.filter(user => user.isChecked === true)
+    console.log("filterByChecked", filterByChecked)
+    setSelectedUser(filterByChecked)
   }
 
   // const handleCheck = (id) => {
