@@ -1,13 +1,13 @@
 import React from 'react';
 import './Header.css';
 
-const Header = () => {
+const Header = ({ selectedUsers }) => {
 
   return (
     <header className="header">
       <h1 className="header-text">Users</h1>
         <div className="button-wrapper">
-          <button className="delete" disabled>Delete</button>
+          {selectedUsers.length > 0 ? <button className="active">Delete</button> : <button disabled>Delete</button>}
         </div>
     </header>
   )

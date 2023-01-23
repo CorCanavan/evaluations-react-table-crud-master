@@ -129,7 +129,7 @@ const App = () => {
   return (
     <main>
       <section className="content-container">
-        <Header />
+        <Header selectedUsers={selectedUsers} />
         <Container allUsersData={allUsersData} handleCheck={handleCheck} />
       </section>
     </main>
