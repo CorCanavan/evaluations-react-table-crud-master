@@ -23,3 +23,24 @@ td {
 .row-wrapper:hover > .email {
   color: #0070c9;
 }
+
+input[type="checkbox"]:checked + label {
+  color: #0070c9;
+}
+
+
+/* input[type="checkbox"]:checked > .email {
+  color: #0070c9;
+} */
+
+/* input[type="checkbox"]:checked + label > .email{
+  color: #0070c9;
+}
+
+input[type="checkbox"]:checked > .email{
+  color: #0070c9;
+}
+
+input:checked > .email {
+  color: #0070c9;
+} */
