@@ -29,10 +29,16 @@ const DELETE_USERS = gql`
 `;
 
 const RESET_USERS = gql`
-  mutation ResetUsers($boolean: Boolean!) {
-    resetUsers(boolean: $boolean)
+  mutation ResetUsers {
+    resetUsers
   }
 `;
+
+// const RESET_USERS = gql`
+//   mutation ResetUsers($boolean: Boolean!) {
+//     resetUsers
+//   }
+// `;
 
 
 const App = () => {
@@ -47,6 +53,7 @@ const App = () => {
  
 
   useEffect(() => {
+    resetUsers(true)
     if (data) {
       // resetUsers(true)
       const formattedData = data.allUsers.map((user, index) => {
