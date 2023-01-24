@@ -140,6 +140,36 @@ const App = () => {
   //     console.log("allUserDataDelete", allUsersData)
   //   })
   // }
+
+  // const handleDelete = () => {
+  //   // e.preventDefault();
+  //   console.log("deleted1")
+  //   console.log("selectedUsers1", selectedUsers)
+  //   const emails = selectedUsers.map(selectedUser => {
+  //     return selectedUser.email;
+  //   })
+  //   deleteUsers({ variables : { emails }})
+  //   // window.location.reload
+  //   console.log("deleted2")
+  //   console.log("data", data)
+  //   console.log("allUsersData", allUsersData)
+  //   console.log('selectedUsers', selectedUsers)
+  //   const removedSelected = allUsersData.reduce((acc, user) => {
+  //     console.log("user", user)
+  //     selectedUsers.forEach(selectedUser => {
+  //       console.log("selectedUser", selectedUser)
+  //       if (!user.isChecked && !acc.includes(user)) {
+  //         acc.push(user)
+  //       }
+  //     })
+  //     console.log("Acc", acc)
+  //     return acc;
+  //   }, [])
+  //   console.log("removedSelected", removedSelected)
+  //   setAllUsersData(removedSelected)
+  //   setSelectedUsers([])
+  // }
+
   const handleDelete = () => {
     // e.preventDefault();
     console.log("deleted1")
@@ -153,19 +183,10 @@ const App = () => {
     console.log("data", data)
     console.log("allUsersData", allUsersData)
     console.log('selectedUsers', selectedUsers)
-    const removedSelected = allUsersData.reduce((acc, user) => {
-      console.log("user", user)
-      selectedUsers.forEach(selectedUser => {
-        console.log("selectedUser", selectedUser)
-        if (!user.isChecked && !acc.includes(user)) {
-          acc.push(user)
-        }
-      })
-      console.log("Acc", acc)
-      return acc;
-    }, [])
-    console.log("removedSelected", removedSelected)
-    setAllUsersData(removedSelected)
+    const filteredUsers = allUsersData.filter(user => !user.isChecked)
+    
+    console.log("filteredUsers", filteredUsers)
+    setAllUsersData(filteredUsers)
     setSelectedUsers([])
   }
 
