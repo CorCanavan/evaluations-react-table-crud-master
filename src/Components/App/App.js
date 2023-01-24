@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import React, { useEffect, useState } from 'react';
 import './App.css';
@@ -15,14 +15,40 @@ const ALL_USERS_QUERY = gql`
   }
 `;
 
+// const DELETE_USERS_MUTATION = gql`
+//   mutation {
+//     deleteUsers {
+//       email
+//     }
+//   }`
+
+const DELETE_USERS = gql`
+  mutation DeleteUsers($emails: [ID]!) {
+    deleteUsers(emails: $emails)
+  }
+`;
+
+const RESET_USERS = gql`
+  mutation ResetUsers($boolean: Boolean!) {
+    resetUsers(boolean: $boolean)
+  }
+`;
+
+
 const App = () => {
   const { loading, error, data } = useQuery(ALL_USERS_QUERY);
   const [allUsersData, setAllUsersData] = useState([])
   const [selectedUsers, setSelectedUsers] = useState([])
   // const [isChecked, setIsChecked] = useState('false')
+  const [deleteUsers] = useMutation(DELETE_USERS)
+  const [resetUsers] = useMutation(RESET_USERS)
+
+
+ 
 
   useEffect(() => {
     if (data) {
+      // resetUsers(true)
       const formattedData = data.allUsers.map((user, index) => {
         const splitRole = user.role.split("_")
         const formattedRole = splitRole.reduce((acc, role) => {
@@ -41,6 +67,7 @@ const App = () => {
         }
       })
       setAllUsersData(formattedData)
+      // resetUsers(true)
     }
   }, [data])
 
@@ -98,11 +125,17 @@ const App = () => {
   //     console.log("allUserDataDelete", allUsersData)
   //   })
   // }
+  const handleDelete = () => {
+    const emails = selectedUsers.map(selectedUser => {
+      return selectedUser.email;
+    })
+    deleteUsers({ variables : { emails }})
+  }
 
   return (
     <main>
       <section className="content-container">
-        <Header selectedUsers={selectedUsers} />
+        <Header selectedUsers={selectedUsers} handleDelete={handleDelete} />
         <Container allUsersData={allUsersData} handleCheck={handleCheck} />
       </section>
     </main>
