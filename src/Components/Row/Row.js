@@ -15,7 +15,7 @@ const Row = ({ id, email, name, role, isChecked, handleCheck }) => {
           {email}
         </label>
       </td>
-      <td>{name}</td>
+      <td className="name">{name}</td>
       <td>{role}</td>
     </tr>
 

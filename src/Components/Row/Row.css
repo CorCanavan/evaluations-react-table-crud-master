@@ -28,6 +28,9 @@ input[type="checkbox"]:checked + label {
   color: #0070c9;
 }
 
+/* .name {
+  cursor: pointer;
+} */
 
 /* input[type="checkbox"]:checked > .email {
   color: #0070c9;

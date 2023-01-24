@@ -22,6 +22,7 @@ button {
   color: red;
   border: 1px solid red;
   background-color: white;
+  cursor: pointer;
 }
 
 .header-text {

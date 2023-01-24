@@ -67,12 +67,8 @@ const App = () => {
   }
 
   const handleSelectedUsers = (revisedUsers) => {
-    // console.log("inside handleSelectedUser allUsersData", allUsersData)
-    // console.log("inside handleSelectedUser revisedUsers", revisedUsers)
     const filterByChecked = revisedUsers.filter(user => user.isChecked === true)
-    // console.log("filterByChecked", filterByChecked)
     setSelectedUsers(filterByChecked)
-    // console.log(selectedUsers, "selectedUsers", allUsersData, "all inside handleSelected")
   }
 
   const handleCheck = (id) => {
@@ -87,34 +83,18 @@ const App = () => {
         return user;
       }
     })
-    // console.log('revisedUsers1 inside handleCheck', revisedUsers)
-    setAllUsersData(revisedUsers)
-    // console.log("revisedUsers2 inside handleCheck", revisedUsers)
-    // console.log("allUsersData1", allUsersData)
+    setAllUsersData(revisedUsers);
     handleSelectedUsers(revisedUsers);
-    // console.log("allUsers last in function", allUsersData)
   }
 
   const handleDelete = () => {
-    // e.preventDefault();
-    // console.log("deleted1")
-    // console.log("selectedUsers1", selectedUsers)
     const emails = selectedUsers.map(selectedUser => {
       return selectedUser.email;
     })
     deleteUsers({ variables : { emails }})
-    // window.location.reload
-    // console.log("deleted2")
-    // console.log("data", data)
-    // console.log("allUsersData", allUsersData)
-    // console.log('selectedUsers', selectedUsers)
     const filteredUsers = allUsersData.filter(user => !user.isChecked)
-    
-    // console.log("filteredUsers", filteredUsers)
     setAllUsersData(filteredUsers)
     setSelectedUsers([])
-    // console.log("allUsersData last", allUsersData)
-    // console.log('selectedUsers last', selectedUsers)
   }
 
   return (
