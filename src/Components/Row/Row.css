@@ -24,10 +24,6 @@ td {
   color: #0070c9;
 }
 
-.row-wrapper > .email > input[type="checkbox"]:checked + label {
-  color: #0070c9;
-}
-
 /* .name {
   cursor: pointer;
 } */
