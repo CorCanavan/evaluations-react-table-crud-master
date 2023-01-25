@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import React, { useEffect, useState } from 'react';
 import './App.css';
@@ -15,13 +15,29 @@ const ALL_USERS_QUERY = gql`
   }
 `;
 
+const DELETE_USERS = gql`
+  mutation DeleteUsers($emails: [ID]!) {
+    deleteUsers(emails: $emails)
+  }
+`;
+
+const RESET_USERS = gql`
+  mutation ResetUsers {
+    resetUsers
+  }
+`;
+
 const App = () => {
   const { loading, error, data } = useQuery(ALL_USERS_QUERY);
   const [allUsersData, setAllUsersData] = useState([])
+  const [selectedUsers, setSelectedUsers] = useState([])
+  const [deleteUsers] = useMutation(DELETE_USERS)
+  const [resetUsers] = useMutation(RESET_USERS)
 
   useEffect(() => {
+    resetUsers(true)
     if (data) {
-      const formattedData = data.allUsers.map(user => {
+      const formattedData = data.allUsers.map((user, index) => {
         const splitRole = user.role.split("_")
         const formattedRole = splitRole.reduce((acc, role) => {
           const lowercase = role.substring(1).toLowerCase();
@@ -30,10 +46,12 @@ const App = () => {
           return acc;
         }, []).join(" ")
         return {
+          id: index + 1,
           email: user.email,
           name: user.name,
           role: formattedRole,
-          typename: user.__typename
+          typename: user.__typename,
+          isChecked: false
         }
       })
       setAllUsersData(formattedData)
@@ -48,11 +66,42 @@ const App = () => {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
 
+  const handleSelectedUsers = (revisedUsers) => {
+    const filterByChecked = revisedUsers.filter(user => user.isChecked)
+    setSelectedUsers(filterByChecked)
+  }
+
+  const handleCheck = (id) => {
+    const revisedUsers = allUsersData.map(user => {
+      if (user.id === id) {
+        const updatedUser = {
+          ...user,
+          isChecked : !user.isChecked
+        }
+        return updatedUser;
+      } else {
+        return user;
+      }
+    })
+    setAllUsersData(revisedUsers);
+    handleSelectedUsers(revisedUsers);
+  }
+
+  const handleDelete = () => {
+    const emails = selectedUsers.map(selectedUser => {
+      return selectedUser.email;
+    })
+    deleteUsers({ variables : { emails }})
+    const filteredUsers = allUsersData.filter(user => !user.isChecked)
+    setAllUsersData(filteredUsers)
+    setSelectedUsers([])
+  }
+
   return (
     <main>
       <section className="content-container">
-        <Header />
-        <Container allUsersData={allUsersData} />
+        <Header selectedUsers={selectedUsers} handleDelete={handleDelete} />
+        <Container allUsersData={allUsersData} handleCheck={handleCheck} />
       </section>
     </main>
   )

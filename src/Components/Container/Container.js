@@ -2,15 +2,18 @@ import React from 'react';
 import './Container.css';
 import Row from '../Row/Row.js';
 
-const Container = ({ allUsersData }) => {
+const Container = ({ allUsersData, handleCheck }) => {
 
   const allUsersRows = allUsersData.map(user => {
     return (
       <Row
-        key={user.email}
+        key={user.id}
+        id={user.id}
         email={user.email}
         name={user.name}
         role={user.role}
+        handleCheck={handleCheck}
+        isChecked={user.isChecked}
       />
     )
   })

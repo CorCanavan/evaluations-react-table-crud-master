@@ -1,19 +1,21 @@
 import React from 'react';
 import './Row.css';
 
-const Row = ({ email, name, role }) => {
+const Row = ({ id, email, name, role, isChecked, handleCheck }) => {
 
   return (
     <tr key={email} className="row-wrapper">
-      <td>
+      <td className="email" style={{color: isChecked ? "#0070c9" : "#333"}}>
         <label className="input-container">
           <input 
             type="checkbox" 
+            value={isChecked}
+            onChange={() => handleCheck(id)}
           />
           {email}
         </label>
       </td>
-      <td>{name}</td>
+      <td className="name">{name}</td>
       <td>{role}</td>
     </tr>
 
