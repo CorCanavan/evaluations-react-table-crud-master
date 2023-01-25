@@ -67,12 +67,12 @@ const App = () => {
   }
 
   const handleSelectedUsers = (revisedUsers) => {
-    const filterByChecked = revisedUsers.filter(user => user.isChecked === true)
+    const filterByChecked = revisedUsers.filter(user => user.isChecked)
     setSelectedUsers(filterByChecked)
   }
 
   const handleCheck = (id) => {
-    const revisedUsers = allUsersData.map (user => {
+    const revisedUsers = allUsersData.map(user => {
       if (user.id === id) {
         const updatedUser = {
           ...user,
