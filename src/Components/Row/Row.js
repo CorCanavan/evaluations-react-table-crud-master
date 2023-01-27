@@ -5,7 +5,7 @@ const Row = ({ id, email, name, role, isChecked, handleCheck }) => {
 
   return (
     <tr key={email} className="row-wrapper">
-      <td className="email" style={{color: isChecked ? "#0070c9" : "#333"}}>
+      <td className="email" style={{color: isChecked ? "#0070c9" : null}}>
         <label className="input-container">
           <input 
             type="checkbox" 
