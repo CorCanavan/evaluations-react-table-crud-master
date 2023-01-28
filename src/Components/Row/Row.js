@@ -1,8 +1,14 @@
 import React from 'react';
 import './Row.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Row = ({ id, email, name, role, isChecked, handleCheck }) => {
+
+  const history = useHistory();
+
+  const handleClickedUser = (name) => {
+    history.push(`user/${email}`);
+  }
 
   return (
     <tr key={email} className="row-wrapper">
@@ -16,9 +22,9 @@ const Row = ({ id, email, name, role, isChecked, handleCheck }) => {
           {email}
         </label>
       </td>
-      <Link to={`user/${email}`} className="name">
-        <td className="name">{name}</td>
-      </Link> 
+      {/* <Link to={`user/${email}`} className="name"> */}
+        <td className="name" onClick={()=> handleClickedUser(name)}>{name}</td>
+      {/* </Link>  */}
       <td>{role}</td>
     </tr>
 

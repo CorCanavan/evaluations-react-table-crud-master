@@ -24,6 +24,10 @@ td {
   color: #0070c9;
 }
 
+.name:hover {
+  cursor: pointer;
+}
+
 /* .name {
   cursor: pointer;
 } */
