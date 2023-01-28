@@ -1,5 +1,6 @@
 import React from 'react';
 import './Row.css';
+import { Link } from 'react-router-dom';
 
 const Row = ({ id, email, name, role, isChecked, handleCheck }) => {
 
@@ -15,7 +16,9 @@ const Row = ({ id, email, name, role, isChecked, handleCheck }) => {
           {email}
         </label>
       </td>
-      <td className="name">{name}</td>
+      <Link to={`user/${email}`} className="name">
+        <td className="name">{name}</td>
+      </Link> 
       <td>{role}</td>
     </tr>
 

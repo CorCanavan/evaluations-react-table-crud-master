@@ -4,6 +4,9 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Header from '../Header/Header';
 import Container from '../Container/Container';
+import Details from '../Details/Details';
+import { Route } from 'react-router-dom';
+
 
 const ALL_USERS_QUERY = gql`
   query {
@@ -99,10 +102,28 @@ const App = () => {
 
   return (
     <main>
-      <section className="content-container">
+      <Route
+        exact path="/"
+        render={()=> {
+          return <section className="content-container">
+            <Header selectedUsers={selectedUsers} handleDelete={handleDelete} />
+            <Container allUsersData={allUsersData} handleCheck={handleCheck} />
+        </section>
+        }}
+      />
+      {/* <section className="content-container">
         <Header selectedUsers={selectedUsers} handleDelete={handleDelete} />
         <Container allUsersData={allUsersData} handleCheck={handleCheck} />
-      </section>
+      </section> */}
+      <Route
+        exact path="/user/:id"
+        render={({match}) => {
+          console.log("match", match, match.params)
+          const userToRender = allUsersData.find(user => user.email === match.params.id)
+          console.log("userToRender", userToRender)
+          return <Details {...userToRender} />
+        }}
+      />
     </main>
   )
 }
