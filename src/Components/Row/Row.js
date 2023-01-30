@@ -14,7 +14,7 @@ const Row = ({ id, email, name, role, isChecked, handleCheck, handleEditUser }) 
     <tr key={email} className="row-wrapper">
       <td className="email" style={{color: isChecked ? "#0070c9" : null}}>
         <label className="input-container">
-          <input 
+          <input className="checkbox"
             type="checkbox" 
             value={isChecked}
             onChange={() => handleCheck(id)}

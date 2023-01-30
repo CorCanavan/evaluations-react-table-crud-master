@@ -5,8 +5,41 @@
   justify-content: space-between;
   /* align-content: center; */
   border-top: 1px solid #e5e5e5;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Nue", san-serif; */
 }
 
-article {
+/* article {
   border: 1px solid green;
+} */
+
+.name-article {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid mediumspringgreen; */
+  width: 50%;
+  /* height: 100vh; */
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Nue", san-serif; */
+}
+
+.name-input-label {
+  /* font-family: SFProText; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Nue", san-serif;font-size: 0.9em;
+  letter-spacing: 0.14px;
+  color: #333;
+  font-weight: 500;
+  padding-top: 1.5em;
+  padding-bottom: .5em;
+}
+
+.name-input {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Nue", san-serif;
+  /* border: 3px solid #A9CDFD; */
+  /* border: 3.5px solid rgba(59, 153, 252, 0.5); */
+  border: 0.5px #b9b9b9;
+  border-radius: 2px;
+  width: 60%;
+  height: 1.4em;
+  box-shadow: 0 0 0 3.5px rgba(59, 153, 252, 0.5), inset 0 0 0 0.5px #b9b9b9, inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  padding: 2px 2px 2px;
 }

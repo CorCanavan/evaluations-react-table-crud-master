@@ -13,7 +13,16 @@ const Details = ({ email, name, role, id}) => {
     <section className="details-container">
       {/* <h1>{email}</h1> */}
       <article className="name-article">
-        {name}
+        <label className="name-input-label">
+          Name
+        </label>
+          <input className="name-input"
+            name="name"
+            type="text"
+            defaultValue={name}
+            // value={name}
+          />
+        {/* </label> */}
       </article>
       <article className="role-article">
         {role}
