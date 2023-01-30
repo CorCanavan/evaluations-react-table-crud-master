@@ -137,7 +137,10 @@ const App = () => {
           // console.log("match", match, match.params)
           // const userToRender = allUsersData.find(user => user.email === match.params.id)
           // console.log("userToRender", userToRender)
-          return <Details {...userToEdit} />
+          return <section className="content-container">
+            <Header userToEdit={userToEdit} />
+            <Details {...userToEdit} />
+          </section>
         }}
       />
     </main>
