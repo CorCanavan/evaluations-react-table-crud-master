@@ -2,13 +2,13 @@ import React from 'react';
 import './Row.css';
 import { Link, useHistory } from 'react-router-dom';
 
-const Row = ({ id, email, name, role, isChecked, handleCheck }) => {
+const Row = ({ id, email, name, role, isChecked, handleCheck, handleEditUser }) => {
 
-  const history = useHistory();
+  // const history = useHistory();
 
-  const handleClickedUser = (name) => {
-    history.push(`user/${email}`);
-  }
+  // const handleClickedUser = (name) => {
+  //   history.push(`user/${email}`);
+  // }
 
   return (
     <tr key={email} className="row-wrapper">
@@ -23,7 +23,8 @@ const Row = ({ id, email, name, role, isChecked, handleCheck }) => {
         </label>
       </td>
       {/* <Link to={`user/${email}`} className="name"> */}
-        <td className="name" onClick={()=> handleClickedUser(name)}>{name}</td>
+        <td className="name" onClick={()=> handleEditUser(name)}>{name}</td>
+               
       {/* </Link>  */}
       <td>{role}</td>
     </tr>

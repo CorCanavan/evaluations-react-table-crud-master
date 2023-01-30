@@ -5,7 +5,7 @@ import './App.css';
 import Header from '../Header/Header';
 import Container from '../Container/Container';
 import Details from '../Details/Details';
-import { Route } from 'react-router-dom';
+import { Route, useHistory } from 'react-router-dom';
 
 
 const ALL_USERS_QUERY = gql`
@@ -34,8 +34,11 @@ const App = () => {
   const { loading, error, data } = useQuery(ALL_USERS_QUERY);
   const [allUsersData, setAllUsersData] = useState([])
   const [selectedUsers, setSelectedUsers] = useState([])
+  const [userToEdit, setUserToEdit] = useState({})
   const [deleteUsers] = useMutation(DELETE_USERS)
   const [resetUsers] = useMutation(RESET_USERS)
+
+  const history = useHistory();
 
   useEffect(() => {
     resetUsers(true)
@@ -100,6 +103,18 @@ const App = () => {
     setSelectedUsers([])
   }
 
+  // const history = useHistory();
+
+  const handleEditUser = (name) => {
+    const findUserByName = allUsersData.find(user => user.name === name)
+    setUserToEdit(findUserByName)
+    let email = findUserByName.email
+    history.push(`user/${email}`);
+  }
+  // does email need to be passed down from on Click instead of name?
+
+  // can you use history object inside React Router render?
+
   return (
     <main>
       <Route
@@ -107,7 +122,7 @@ const App = () => {
         render={()=> {
           return <section className="content-container">
             <Header selectedUsers={selectedUsers} handleDelete={handleDelete} />
-            <Container allUsersData={allUsersData} handleCheck={handleCheck} />
+            <Container allUsersData={allUsersData} handleCheck={handleCheck} handleEditUser={handleEditUser} />
         </section>
         }}
       />
@@ -118,6 +133,7 @@ const App = () => {
       <Route
         exact path="/user/:id"
         render={({match}) => {
+          // remove match
           console.log("match", match, match.params)
           const userToRender = allUsersData.find(user => user.email === match.params.id)
           console.log("userToRender", userToRender)
