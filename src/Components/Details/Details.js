@@ -10,9 +10,15 @@ const Details = ({ email, name, role, id}) => {
   console.log('id', id)
   
   return (
-    <div className="details">
-      <h1>{email}</h1>
-    </div>
+    <section className="details-container">
+      {/* <h1>{email}</h1> */}
+      <article className="name-article">
+        {name}
+      </article>
+      <article className="role-article">
+        {role}
+      </article>
+    </section>
   )
 }
 
