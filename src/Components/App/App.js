@@ -132,12 +132,12 @@ const App = () => {
       </section> */}
       <Route
         exact path="/user/:id"
-        render={({match}) => {
+        render={() => {
           // remove match
-          console.log("match", match, match.params)
-          const userToRender = allUsersData.find(user => user.email === match.params.id)
-          console.log("userToRender", userToRender)
-          return <Details {...userToRender} />
+          // console.log("match", match, match.params)
+          // const userToRender = allUsersData.find(user => user.email === match.params.id)
+          // console.log("userToRender", userToRender)
+          return <Details {...userToEdit} />
         }}
       />
     </main>

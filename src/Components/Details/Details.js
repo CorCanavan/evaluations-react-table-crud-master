@@ -5,6 +5,9 @@ import './Details.css';
 const Details = ({ email, name, role, id}) => {
 
   console.log('email', email)
+  console.log('name', name)
+  console.log('role', role)
+  console.log('id', id)
   
   return (
     <div className="details">
