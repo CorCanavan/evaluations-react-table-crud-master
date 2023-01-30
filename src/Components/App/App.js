@@ -131,7 +131,7 @@ const App = () => {
         <Container allUsersData={allUsersData} handleCheck={handleCheck} />
       </section> */}
       <Route
-        exact path="/user/:id"
+        exact path="/user/:email"
         render={() => {
           // remove match
           // console.log("match", match, match.params)
