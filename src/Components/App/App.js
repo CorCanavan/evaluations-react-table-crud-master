@@ -61,6 +61,7 @@ const App = () => {
         }
       })
       setAllUsersData(formattedData)
+      // setUserToEdit({})
     }
   }, [data])
 
