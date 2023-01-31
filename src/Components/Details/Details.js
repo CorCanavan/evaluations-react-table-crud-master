@@ -13,14 +13,23 @@ const Details = ({ userToEdit, allRoles, formatRole}) => {
   // console.log("formatRole", formatRole('APP_MANAGER'))
 
   console.log("allRoles", allRoles)
-  // const roleRadioButtons = data.__type.enumValues.map(enumRole => {
-  //   <input
-  //     type="radio"
-  //     name="role"
-  //     value={enumRole}
 
-  //   />
-  // })
+  const roleRadioButtons = allRoles.map(enumRole => {
+    console.log("enumRole", enumRole)
+    console.log("fn", formatRole(enumRole.name))
+    return (
+      <label className="radio-label">
+        <input
+          key={enumRole.name}
+          type="radio"
+          name="role"
+          value={enumRole.name}
+          checked={userToEdit.role === formatRole(enumRole.name)}
+    />
+      {formatRole(enumRole.name)}
+      </label>
+    )
+  })
 
   return (
     <section className="details-container">
@@ -35,10 +44,9 @@ const Details = ({ userToEdit, allRoles, formatRole}) => {
             defaultValue={userToEdit.name}
             // value={name}
           />
-        {/* </label> */}
       </article>
       <article className="role-article">
-        {userToEdit.role}
+        {roleRadioButtons}
       </article>
     </section>
   )
