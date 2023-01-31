@@ -151,7 +151,8 @@ const App = () => {
             <Header 
               userToEdit={userToEdit} 
             />
-            <Details 
+            <Details
+              setUserToEdit={setUserToEdit} 
               userToEdit={userToEdit} 
               allRoles={allRoles} 
               formatRole={formatRole} 
