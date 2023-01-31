@@ -1,14 +1,7 @@
 import React from 'react';
 import './Row.css';
-import { Link, useHistory } from 'react-router-dom';
 
 const Row = ({ id, email, name, role, isChecked, handleCheck, handleEditUser }) => {
-
-  // const history = useHistory();
-
-  // const handleClickedUser = (name) => {
-  //   history.push(`user/${email}`);
-  // }
 
   return (
     <tr key={email} className="row-wrapper">
@@ -22,10 +15,7 @@ const Row = ({ id, email, name, role, isChecked, handleCheck, handleEditUser }) 
           {email}
         </label>
       </td>
-      {/* <Link to={`user/${email}`} className="name"> */}
-        <td className="name" onClick={()=> handleEditUser(name)}>{name}</td>
-               
-      {/* </Link>  */}
+      <td className="name" onClick={()=> handleEditUser(name)}>{name}</td>
       <td>{role}</td>
     </tr>
 

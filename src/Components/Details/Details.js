@@ -1,22 +1,7 @@
-import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 import React from 'react';
 import './Details.css';
 
-// const ROLES_QUERY = gql`
-//   query {
-//     __type(name: "Role") {
-//       name
-//       enumValues {
-//         name
-//       }
-//     }
-//   }
-// `;
-
 const Details = ({ email, name, role, id}) => {
-
-  // const {loading, error, data} = useQuery(ROLES_QUERY)
 
   console.log('email', email)
   console.log('name', name)

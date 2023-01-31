@@ -122,8 +122,6 @@ const App = () => {
     setSelectedUsers([])
   }
 
-  // const history = useHistory();
-
   const handleEditUser = (name) => {
     const findUserByName = allUsersData.find(user => user.name === name)
     setUserToEdit(findUserByName)
@@ -131,8 +129,6 @@ const App = () => {
     history.push(`user/${email}`);
   }
   // does email need to be passed down from on Click instead of name?
-
-  // can you use history object inside React Router render?
 
   return (
     <main>
@@ -145,17 +141,9 @@ const App = () => {
         </section>
         }}
       />
-      {/* <section className="content-container">
-        <Header selectedUsers={selectedUsers} handleDelete={handleDelete} />
-        <Container allUsersData={allUsersData} handleCheck={handleCheck} />
-      </section> */}
       <Route
         exact path="/user/:email"
         render={() => {
-          // remove match
-          // console.log("match", match, match.params)
-          // const userToRender = allUsersData.find(user => user.email === match.params.id)
-          // console.log("userToRender", userToRender)
           return <section className="content-container">
             <Header userToEdit={userToEdit} />
             <Details {...userToEdit} />
