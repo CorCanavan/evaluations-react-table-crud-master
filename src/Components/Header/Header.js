@@ -5,6 +5,8 @@ const Header = ({ selectedUsers, handleDelete, userToEdit}) => {
 
   console.log('userToEdit', userToEdit)
 
+  // userToEdit.hasOwnProperty("name")
+
   return (
     <>
     {userToEdit ? <header className="header">

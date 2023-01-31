@@ -64,16 +64,6 @@ const App = () => {
     resetUsers(true)
     if (usersData && rolesData) {
       const formattedData = usersData.allUsers.map((user, index) => {
-        // const splitRole = user.role.split("_")
-        // console.log("splitRole", splitRole)
-        // const formattedRole = splitRole.reduce((acc, role) => {
-        //   const lowercase = role.substring(1).toLowerCase();
-        //   const newFormat = role[0] + lowercase;
-        //   acc.push(newFormat)
-        //   console.log("acc", acc)
-        //   return acc;
-        // }, []).join(" ")
-        // console.log("formattedRole", formattedRole)
         return {
           id: index + 1,
           email: user.email,

@@ -5,10 +5,10 @@ const Details = ({ userToEdit, allRoles, formatRole}) => {
 
   const roleRadioButtons = allRoles.map(enumRole => {
     return (
-      <label className="radio-label">
+      <label className="radio-label" key={formatRole(enumRole.name)}>
         <input
-          className="radio-input"
           key={enumRole.name}
+          className="radio-input"
           type="radio"
           name="role"
           value={enumRole.name}
@@ -21,7 +21,6 @@ const Details = ({ userToEdit, allRoles, formatRole}) => {
 
   return (
     <section className="details-container">
-      {/* <h1>{email}</h1> */}
       <article className="name-article">
         <label className="name-input-label">
           Name
