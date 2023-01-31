@@ -3,27 +3,25 @@ import { gql } from 'apollo-boost';
 import React from 'react';
 import './Details.css';
 
-const ROLES_QUERY = gql`
-  query {
-    __type(name: "Role") {
-      name
-      enumValues {
-        name
-      }
-    }
-  }
-`;
+// const ROLES_QUERY = gql`
+//   query {
+//     __type(name: "Role") {
+//       name
+//       enumValues {
+//         name
+//       }
+//     }
+//   }
+// `;
 
 const Details = ({ email, name, role, id}) => {
 
-  const {loading, error, data} = useQuery(ROLES_QUERY)
+  // const {loading, error, data} = useQuery(ROLES_QUERY)
 
   console.log('email', email)
   console.log('name', name)
   console.log('role', role)
   console.log('id', id)
-  
-  console.log('data2', data)
 
   // const roleRadioButtons = data.__type.enumValues.map(enumRole => {
   //   <input

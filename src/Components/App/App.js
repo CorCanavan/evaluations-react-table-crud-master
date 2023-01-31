@@ -30,16 +30,16 @@ const RESET_USERS = gql`
   }
 `;
 
-// const ROLES_QUERY = gql`
-//   query {
-//     __type(role: "Role") {
-//       role
-//       enumValues {
-//         role
-//       }
-//     }
-//   }
-// `;
+const ROLES_QUERY = gql`
+  query {
+    __type(name: "Role") {
+      name
+      enumValues {
+        name
+      }
+    }
+  }
+`;
 
 const App = () => {
   const { loading: usersLoading, error: usersError, data: usersData } = useQuery(ALL_USERS_QUERY);
@@ -48,7 +48,8 @@ const App = () => {
   const [userToEdit, setUserToEdit] = useState({})
   const [deleteUsers] = useMutation(DELETE_USERS)
   const [resetUsers] = useMutation(RESET_USERS)
-  // const {loading, error, data} = useQuery(ROLES_QUERY)
+  const {loading: rolesLoading, error: rolesError, data: rolesData} = useQuery(ROLES_QUERY);
+  const [allRoles, setAllRoles] = useState([])
 
   const history = useHistory();
 
