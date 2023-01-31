@@ -3,13 +3,13 @@ import './Details.css';
 
 const Details = ({ setUserToEdit, userToEdit, allRoles, formatRole}) => {
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setUserToEdit(prevState => ({
-  //     ...prevState,
-  //     [name]: value
-  //   }))
-  // }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserToEdit(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
 
   const roleRadioButtons = allRoles.map(enumRole => {
     return (
@@ -21,9 +21,10 @@ const Details = ({ setUserToEdit, userToEdit, allRoles, formatRole}) => {
           name="role"
           value={enumRole.name}
           defaultChecked={userToEdit.role === formatRole(enumRole.name)}
-          onChange={(e) => setUserToEdit({...userToEdit, role: e.target.value})}
-          // onChange={(e) => handleChange(e)}
+          // onChange={(e) => setUserToEdit({...userToEdit, role: e.target.value})}
+          onChange={(e) => handleChange(e)}
           // onChange={(e) => setUserToEdit(e.target.value)}
+          // does value have to be in enum format?
         />
         {formatRole(enumRole.name)}
       </label>
@@ -41,6 +42,7 @@ const Details = ({ setUserToEdit, userToEdit, allRoles, formatRole}) => {
             type="text"
             defaultValue={userToEdit.name}
             // value={name}
+            onChange={(e) => handleChange(e)}
           />
       </article>
       <article className="role-article">
