@@ -1,16 +1,16 @@
 import React from 'react';
 import './Details.css';
 
-const Details = ({ userToEdit, allRoles}) => {
+const Details = ({ userToEdit, allRoles, formatRole}) => {
 
-  const formatRole = (enumRole) => {
-    const revisedRole = enumRole.split("_")
-    return revisedRole.map(role => {
-      return role[0] + role.substring(1).toLowerCase();
-    }).join(" ")
-  }
+  // const formatRole = (enumRole) => {
+  //   const revisedRole = enumRole.split("_")
+  //   return revisedRole.map(role => {
+  //     return role[0] + role.substring(1).toLowerCase();
+  //   }).join(" ")
+  // }
 
-  console.log("formatRole", formatRole('APP_MANAGER'))
+  // console.log("formatRole", formatRole('APP_MANAGER'))
 
   console.log("allRoles", allRoles)
   // const roleRadioButtons = data.__type.enumValues.map(enumRole => {

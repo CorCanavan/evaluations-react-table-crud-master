@@ -53,25 +53,32 @@ const App = () => {
 
   const history = useHistory();
 
+  const formatRole = (enumRole) => {
+    const revisedRole = enumRole.split("_")
+    return revisedRole.map(role => {
+      return role[0] + role.substring(1).toLowerCase();
+    }).join(" ")
+  }
+  
   useEffect(() => {
     resetUsers(true)
     if (usersData && rolesData) {
       const formattedData = usersData.allUsers.map((user, index) => {
-        const splitRole = user.role.split("_")
-        console.log("splitRole", splitRole)
-        const formattedRole = splitRole.reduce((acc, role) => {
-          const lowercase = role.substring(1).toLowerCase();
-          const newFormat = role[0] + lowercase;
-          acc.push(newFormat)
-          console.log("acc", acc)
-          return acc;
-        }, []).join(" ")
-        console.log("formattedRole", formattedRole)
+        // const splitRole = user.role.split("_")
+        // console.log("splitRole", splitRole)
+        // const formattedRole = splitRole.reduce((acc, role) => {
+        //   const lowercase = role.substring(1).toLowerCase();
+        //   const newFormat = role[0] + lowercase;
+        //   acc.push(newFormat)
+        //   console.log("acc", acc)
+        //   return acc;
+        // }, []).join(" ")
+        // console.log("formattedRole", formattedRole)
         return {
           id: index + 1,
           email: user.email,
           name: user.name,
-          role: formattedRole,
+          role: formatRole(user.role),
           typename: user.__typename,
           isChecked: false
         }
@@ -150,7 +157,7 @@ const App = () => {
         render={() => {
           return <section className="content-container">
             <Header userToEdit={userToEdit} />
-            <Details userToEdit={userToEdit} allRoles={allRoles} />
+            <Details userToEdit={userToEdit} allRoles={allRoles} formatRole={formatRole} />
           </section>
         }}
       />
