@@ -43,14 +43,13 @@ const ROLES_QUERY = gql`
 
 const App = () => {
   const { loading: usersLoading, error: usersError, data: usersData } = useQuery(ALL_USERS_QUERY);
-  const [allUsersData, setAllUsersData] = useState([])
-  const [selectedUsers, setSelectedUsers] = useState([])
-  const [userToEdit, setUserToEdit] = useState({})
-  const [deleteUsers] = useMutation(DELETE_USERS)
-  const [resetUsers] = useMutation(RESET_USERS)
-  const {loading: rolesLoading, error: rolesError, data: rolesData} = useQuery(ROLES_QUERY);
-  const [allRoles, setAllRoles] = useState([])
-
+  const { loading: rolesLoading, error: rolesError, data: rolesData } = useQuery(ROLES_QUERY);
+  const [allUsersData, setAllUsersData] = useState([]);
+  const [allRoles, setAllRoles] = useState([]);
+  const [selectedUsers, setSelectedUsers] = useState([]);
+  const [userToEdit, setUserToEdit] = useState({});
+  const [deleteUsers] = useMutation(DELETE_USERS);
+  const [resetUsers] = useMutation(RESET_USERS);
   const history = useHistory();
 
   const formatRole = (enumRole) => {
@@ -73,23 +72,21 @@ const App = () => {
           isChecked: false
         }
       })
-      // console.log("formattedRole", formattedRole)
-      console.log('usersData', usersData)
-      console.log('rolesData', rolesData)
-      console.log('rolesDatalong', rolesData.__type.enumValues)
       setAllUsersData(formattedData)
       setAllRoles(rolesData.__type.enumValues)
-      // setAllRoles(rolesData)
-      // setUserToEdit({})
     }
   }, [usersData])
 
-    if (usersLoading) {
+    if (usersLoading || rolesLoading) {
     return <p>Loading...</p>;
   }
 
   if (usersError) {
     return <p>Error: {JSON.stringify(usersError)}</p>;
+  }
+
+  if (rolesError) {
+    return <p>Error: {JSON.stringify(rolesError)}</p>;
   }
 
   const handleSelectedUsers = (revisedUsers) => {
@@ -128,25 +125,37 @@ const App = () => {
     setUserToEdit(findUserByName)
     history.push(`user/${findUserByName.email}`);
   }
-  // does email need to be passed down from on Click instead of name?
 
   return (
     <main>
       <Route
         exact path="/"
-        render={()=> {
+        render={() => {
           return <section className="content-container">
-            <Header selectedUsers={selectedUsers} handleDelete={handleDelete} />
-            <Container allUsersData={allUsersData} handleCheck={handleCheck} handleEditUser={handleEditUser} />
-        </section>
+            <Header 
+              selectedUsers={selectedUsers} 
+              handleDelete={handleDelete} 
+            />
+            <Container 
+              allUsersData={allUsersData} 
+              handleCheck={handleCheck} 
+              handleEditUser={handleEditUser} 
+            />
+          </section>
         }}
       />
       <Route
         exact path="/user/:email"
         render={() => {
           return <section className="content-container">
-            <Header userToEdit={userToEdit} />
-            <Details userToEdit={userToEdit} allRoles={allRoles} formatRole={formatRole} />
+            <Header 
+              userToEdit={userToEdit} 
+            />
+            <Details 
+              userToEdit={userToEdit} 
+              allRoles={allRoles} 
+              formatRole={formatRole} 
+            />
           </section>
         }}
       />
