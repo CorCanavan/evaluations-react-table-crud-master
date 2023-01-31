@@ -1,13 +1,18 @@
 import React from 'react';
 import './Details.css';
 
-const Details = ({ email, name, role, id}) => {
+const Details = ({ userToEdit, allRoles}) => {
 
-  console.log('email', email)
-  console.log('name', name)
-  console.log('role', role)
-  console.log('id', id)
+  const formatRole = (enumRole) => {
+    const revisedRole = enumRole.split("_")
+    return revisedRole.map(role => {
+      return role[0] + role.substring(1).toLowerCase();
+    }).join(" ")
+  }
 
+  console.log("formatRole", formatRole('APP_MANAGER'))
+
+  console.log("allRoles", allRoles)
   // const roleRadioButtons = data.__type.enumValues.map(enumRole => {
   //   <input
   //     type="radio"
@@ -27,13 +32,13 @@ const Details = ({ email, name, role, id}) => {
           <input className="name-input"
             name="name"
             type="text"
-            defaultValue={name}
+            defaultValue={userToEdit.name}
             // value={name}
           />
         {/* </label> */}
       </article>
       <article className="role-article">
-        {role}
+        {userToEdit.role}
       </article>
     </section>
   )

@@ -55,7 +55,7 @@ const App = () => {
 
   useEffect(() => {
     resetUsers(true)
-    if (usersData) {
+    if (usersData && rolesData) {
       const formattedData = usersData.allUsers.map((user, index) => {
         const splitRole = user.role.split("_")
         console.log("splitRole", splitRole)
@@ -78,7 +78,11 @@ const App = () => {
       })
       // console.log("formattedRole", formattedRole)
       console.log('usersData', usersData)
+      console.log('rolesData', rolesData)
+      console.log('rolesDatalong', rolesData.__type.enumValues)
       setAllUsersData(formattedData)
+      setAllRoles(rolesData.__type.enumValues)
+      // setAllRoles(rolesData)
       // setUserToEdit({})
     }
   }, [usersData])
@@ -146,7 +150,7 @@ const App = () => {
         render={() => {
           return <section className="content-container">
             <Header userToEdit={userToEdit} />
-            <Details {...userToEdit} />
+            <Details userToEdit={userToEdit} allRoles={allRoles} />
           </section>
         }}
       />
