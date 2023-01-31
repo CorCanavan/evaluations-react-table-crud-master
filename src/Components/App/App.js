@@ -42,7 +42,7 @@ const RESET_USERS = gql`
 // `;
 
 const App = () => {
-  const { loading, error, data } = useQuery(ALL_USERS_QUERY);
+  const { loading: usersLoading, error: usersError, data: usersData } = useQuery(ALL_USERS_QUERY);
   const [allUsersData, setAllUsersData] = useState([])
   const [selectedUsers, setSelectedUsers] = useState([])
   const [userToEdit, setUserToEdit] = useState({})
@@ -54,9 +54,10 @@ const App = () => {
 
   useEffect(() => {
     resetUsers(true)
-    if (data) {
-      const formattedData = data.allUsers.map((user, index) => {
+    if (usersData) {
+      const formattedData = usersData.allUsers.map((user, index) => {
         const splitRole = user.role.split("_")
+        console.log("splitRole", splitRole)
         const formattedRole = splitRole.reduce((acc, role) => {
           const lowercase = role.substring(1).toLowerCase();
           const newFormat = role[0] + lowercase;
@@ -75,18 +76,18 @@ const App = () => {
         }
       })
       // console.log("formattedRole", formattedRole)
-      console.log('data', data)
+      console.log('usersData', usersData)
       setAllUsersData(formattedData)
       // setUserToEdit({})
     }
-  }, [data])
+  }, [usersData])
 
-    if (loading) {
+    if (usersLoading) {
     return <p>Loading...</p>;
   }
 
-  if (error) {
-    return <p>Error: {JSON.stringify(error)}</p>;
+  if (usersError) {
+    return <p>Error: {JSON.stringify(usersError)}</p>;
   }
 
   const handleSelectedUsers = (revisedUsers) => {

@@ -23,8 +23,17 @@ const Details = ({ email, name, role, id}) => {
   console.log('role', role)
   console.log('id', id)
   
-  console.log('data', data)
-  
+  console.log('data2', data)
+
+  // const roleRadioButtons = data.__type.enumValues.map(enumRole => {
+  //   <input
+  //     type="radio"
+  //     name="role"
+  //     value={enumRole}
+
+  //   />
+  // })
+
   return (
     <section className="details-container">
       {/* <h1>{email}</h1> */}
