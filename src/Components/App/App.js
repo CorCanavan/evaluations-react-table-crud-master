@@ -117,8 +117,8 @@ const App = () => {
     const emails = selectedUsers.map(selectedUser => {
       return selectedUser.email;
     })
-    deleteUsers({ variables : { emails }})
     const filteredUsers = allUsersData.filter(user => !user.isChecked)
+    deleteUsers({ variables : { emails }})
     setAllUsersData(filteredUsers)
     setSelectedUsers([])
   }
@@ -126,8 +126,7 @@ const App = () => {
   const handleEditUser = (name) => {
     const findUserByName = allUsersData.find(user => user.name === name)
     setUserToEdit(findUserByName)
-    let email = findUserByName.email
-    history.push(`user/${email}`);
+    history.push(`user/${findUserByName.email}`);
   }
   // does email need to be passed down from on Click instead of name?
 

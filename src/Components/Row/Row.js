@@ -9,7 +9,7 @@ const Row = ({ id, email, name, role, isChecked, handleCheck, handleEditUser }) 
         <label className="input-container">
           <input className="checkbox"
             type="checkbox" 
-            value={isChecked}
+            defaultChecked={isChecked}
             onChange={() => handleCheck(id)}
           />
           {email}
