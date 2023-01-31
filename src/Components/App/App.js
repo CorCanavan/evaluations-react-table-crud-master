@@ -30,6 +30,17 @@ const RESET_USERS = gql`
   }
 `;
 
+// const ROLES_QUERY = gql`
+//   query {
+//     __type(role: "Role") {
+//       role
+//       enumValues {
+//         role
+//       }
+//     }
+//   }
+// `;
+
 const App = () => {
   const { loading, error, data } = useQuery(ALL_USERS_QUERY);
   const [allUsersData, setAllUsersData] = useState([])
@@ -37,6 +48,7 @@ const App = () => {
   const [userToEdit, setUserToEdit] = useState({})
   const [deleteUsers] = useMutation(DELETE_USERS)
   const [resetUsers] = useMutation(RESET_USERS)
+  // const {loading, error, data} = useQuery(ROLES_QUERY)
 
   const history = useHistory();
 
@@ -49,8 +61,10 @@ const App = () => {
           const lowercase = role.substring(1).toLowerCase();
           const newFormat = role[0] + lowercase;
           acc.push(newFormat)
+          console.log("acc", acc)
           return acc;
         }, []).join(" ")
+        console.log("formattedRole", formattedRole)
         return {
           id: index + 1,
           email: user.email,
@@ -60,6 +74,8 @@ const App = () => {
           isChecked: false
         }
       })
+      // console.log("formattedRole", formattedRole)
+      console.log('data', data)
       setAllUsersData(formattedData)
       // setUserToEdit({})
     }
