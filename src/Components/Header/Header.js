@@ -1,10 +1,11 @@
 import React from 'react';
 import './Header.css';
+import { Link } from 'react-router-dom';
 
 const Header = ({ selectedUsers, handleDelete, userToEdit, handleUpdatedUser }) => {
   const isDetailsView = !!userToEdit;
   const headerTitle = isDetailsView ? userToEdit.email : 'Users';
-  const saveButton = (<button className="save-btn" onClick={handleUpdatedUser}>Save</button>);
+  const saveButton = (<Link to='/'><button className="save-btn" onClick={handleUpdatedUser}>Save</button></Link>);
   const setDeleteButton = () => {
     if (selectedUsers.length) {
       return (<button className="active" onClick={handleDelete}>Delete</button>)

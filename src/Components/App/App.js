@@ -168,6 +168,10 @@ const App = () => {
     history.push(`user/${findUserByName.email}`);
   }
 
+  const clearUserToEdit = () => {
+    setUserToEdit({})
+  }
+
   const handleUpdatedUser = () => {
     const userAttrInput = {
       // email: userToEdit.email,
@@ -175,7 +179,10 @@ const App = () => {
       role: userToEdit.role
     }
     updateUser({ variables: { email: userToEdit.email, newAttributes: userAttrInput }, refetchQueries: [{query: ALL_USERS_QUERY}] })
-    history.push(`/`)
+    // history.push(`/`)
+    // setUserToEdit({})
+    clearUserToEdit();
+    // update 
   }
 
   return (
