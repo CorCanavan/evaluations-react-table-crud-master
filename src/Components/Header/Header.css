@@ -29,3 +29,10 @@ button {
   font-size: 2em;
   margin-bottom: .5em;
 }
+
+.save-btn {
+  background-color: #0070c9;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

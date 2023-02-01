@@ -1,4 +1,4 @@
-input {
+.checkbox {
   margin-right: 1.5em;
 }
 
@@ -24,6 +24,6 @@ td {
   color: #0070c9;
 }
 
-/* .name {
+.name:hover {
   cursor: pointer;
-} */
+}

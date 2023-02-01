@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import env from './env';
 import App from './Components/App/App';
+import { BrowserRouter } from 'react-router-dom';
 
 const client = new ApolloClient({
   uri: env.GRAPHQL_ENDPOINT,
@@ -17,9 +18,11 @@ const client = new ApolloClient({
 });
 
 const Root = () => (
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>
+  <BrowserRouter>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </BrowserRouter>
 );
 
 ReactDOM.render(<Root />, document.getElementById('root'));

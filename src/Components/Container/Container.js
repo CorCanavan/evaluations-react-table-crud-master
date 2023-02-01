@@ -2,7 +2,7 @@ import React from 'react';
 import './Container.css';
 import Row from '../Row/Row.js';
 
-const Container = ({ allUsersData, handleCheck }) => {
+const Container = ({ allUsersData, handleCheck, handleEditUser }) => {
 
   const allUsersRows = allUsersData.map(user => {
     return (
@@ -13,6 +13,7 @@ const Container = ({ allUsersData, handleCheck }) => {
         name={user.name}
         role={user.role}
         handleCheck={handleCheck}
+        handleEditUser={handleEditUser}
         isChecked={user.isChecked}
       />
     )
