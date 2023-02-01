@@ -174,15 +174,24 @@ const App = () => {
 
   const handleUpdatedUser = () => {
     const userAttrInput = {
-      // email: userToEdit.email,
       name: userToEdit.name,
       role: userToEdit.role
     }
     updateUser({ variables: { email: userToEdit.email, newAttributes: userAttrInput }, refetchQueries: [{query: ALL_USERS_QUERY}] })
-    // history.push(`/`)
-    // setUserToEdit({})
+
+    const updatedAllUsers = allUsersData.map(user => {
+      if (user.email === userToEdit.email) {
+        return {
+          ...user,
+          name: userToEdit.name,
+          role: formatRole(userToEdit.role)
+        }
+      } else {
+        return user;
+      }
+    })
+    setAllUsersData(updatedAllUsers)
     clearUserToEdit();
-    // update 
   }
 
   return (
