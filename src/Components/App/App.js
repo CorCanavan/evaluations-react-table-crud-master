@@ -73,6 +73,7 @@ const App = () => {
   
   useEffect(() => {
     resetUsers(true)
+    console.log('meow')
     if (usersData && rolesData) {
       const formattedData = usersData.allUsers.map((user, index) => {
         return {
@@ -147,14 +148,18 @@ const App = () => {
       name: userToEdit.name,
       role: userToEdit.role
     }
-    updateUser({ variables: { email: userToEdit.email, newAttributes: userAttrInput }, refetchQueries: [{query: ALL_USERS_QUERY}] })
+    // updateUser({ variables: { email: userToEdit.email, newAttributes: userAttrInput }, refetchQueries: [{query: ALL_USERS_QUERY}] })
 
+    updateUser({ variables: { email: userToEdit.email, newAttributes: userAttrInput } })
+
+    console.log("allUsers1", allUsersData)
     const updatedAllUsers = allUsersData.map(user => {
       if (user.email === userToEdit.email) {
         return {
           ...user,
           name: userToEdit.name,
-          role: formatRole(userToEdit.role)
+          role: formatRole(userToEdit.role),
+          // isChecked: userToEdit.isChecked
         }
       } else {
         return user;
@@ -162,6 +167,7 @@ const App = () => {
     })
     setAllUsersData(updatedAllUsers)
     clearUserToEdit();
+    console.log("allUsers2", allUsersData)
   }
 
   return (
