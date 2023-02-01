@@ -1,10 +1,10 @@
 import React from 'react';
 import './Header.css';
 
-const Header = ({ selectedUsers, handleDelete, userToEdit}) => {
+const Header = ({ selectedUsers, handleDelete, userToEdit, handleUpdatedUser }) => {
   const isDetailsView = !!userToEdit;
   const headerTitle = isDetailsView ? userToEdit.email : 'Users';
-  const saveButton = (<button className="save-btn">Save</button>);
+  const saveButton = (<button className="save-btn" onClick={handleUpdatedUser}>Save</button>);
   const setDeleteButton = () => {
     if (selectedUsers.length) {
       return (<button className="active" onClick={handleDelete}>Delete</button>)

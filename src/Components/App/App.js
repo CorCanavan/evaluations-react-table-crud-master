@@ -41,6 +41,47 @@ const ROLES_QUERY = gql`
   }
 `;
 
+// const UPDATE_USER = gql`
+//   mutation UpdateUser($email: ID!, $newAttributes: UserAttributesInput) {
+//     updateUser(input: {
+//       email: $email
+//       name: $name
+//       role: $role
+//     })
+//   }
+// `
+
+// const UPDATE_USER = gql`
+//   mutation UpdateUser($email: ID!, $newAttributes: UserAttributesInput) {
+//     updateUser(email: $email
+//       name: $name
+//       role: $role
+//     )
+//   }
+// `
+
+// const UPDATE_USER = gql`
+//   mutation UpdateUser($email: ID!, $newAttributes: UserAttributesInput!) {
+//     updateUser(email: $email,
+//         newAttributes: $newAttributes
+//     ) {
+//       name,
+//       role
+//     }
+//   }
+// `
+
+const UPDATE_USER = gql`
+  mutation UpdateUser($email: ID!, $newAttributes: UserAttributesInput!) {
+    updateUser(email: $email,
+        newAttributes: $newAttributes
+    ) {
+      name,
+      role
+    }
+  }
+`
+
 const App = () => {
   const { loading: usersLoading, error: usersError, data: usersData } = useQuery(ALL_USERS_QUERY);
   const { loading: rolesLoading, error: rolesError, data: rolesData } = useQuery(ROLES_QUERY);
@@ -50,6 +91,7 @@ const App = () => {
   const [userToEdit, setUserToEdit] = useState({});
   const [deleteUsers] = useMutation(DELETE_USERS);
   const [resetUsers] = useMutation(RESET_USERS);
+  const [updateUser] = useMutation(UPDATE_USER)
   const history = useHistory();
 
   const formatRole = (enumRole) => {
@@ -126,6 +168,16 @@ const App = () => {
     history.push(`user/${findUserByName.email}`);
   }
 
+  const handleUpdatedUser = () => {
+    const userAttrInput = {
+      // email: userToEdit.email,
+      name: userToEdit.name,
+      role: userToEdit.role
+    }
+    updateUser({ variables: { email: userToEdit.email, newAttributes: userAttrInput }, refetchQueries: [{query: ALL_USERS_QUERY}] })
+    history.push(`/`)
+  }
+
   return (
     <main>
       <Route
@@ -150,6 +202,7 @@ const App = () => {
           return <section className="content-container">
             <Header 
               userToEdit={userToEdit} 
+              handleUpdatedUser={handleUpdatedUser}
             />
             <Details
               setUserToEdit={setUserToEdit} 
