@@ -41,36 +41,6 @@ const ROLES_QUERY = gql`
   }
 `;
 
-// const UPDATE_USER = gql`
-//   mutation UpdateUser($email: ID!, $newAttributes: UserAttributesInput) {
-//     updateUser(input: {
-//       email: $email
-//       name: $name
-//       role: $role
-//     })
-//   }
-// `
-
-// const UPDATE_USER = gql`
-//   mutation UpdateUser($email: ID!, $newAttributes: UserAttributesInput) {
-//     updateUser(email: $email
-//       name: $name
-//       role: $role
-//     )
-//   }
-// `
-
-// const UPDATE_USER = gql`
-//   mutation UpdateUser($email: ID!, $newAttributes: UserAttributesInput!) {
-//     updateUser(email: $email,
-//         newAttributes: $newAttributes
-//     ) {
-//       name,
-//       role
-//     }
-//   }
-// `
-
 const UPDATE_USER = gql`
   mutation UpdateUser($email: ID!, $newAttributes: UserAttributesInput!) {
     updateUser(email: $email,
@@ -80,7 +50,7 @@ const UPDATE_USER = gql`
       role
     }
   }
-`
+`;
 
 const App = () => {
   const { loading: usersLoading, error: usersError, data: usersData } = useQuery(ALL_USERS_QUERY);
