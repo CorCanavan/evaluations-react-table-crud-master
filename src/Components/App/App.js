@@ -56,6 +56,7 @@ const App = () => {
   const [allRoles, setAllRoles] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [userToEdit, setUserToEdit] = useState({});
+  const [error, setError] = useState('');
   const [deleteUsers] = useMutation(DELETE_USERS);
   const [resetUsers] = useMutation(RESET_USERS);
   const [updateUser] = useMutation(UPDATE_USER);
@@ -75,12 +76,12 @@ const App = () => {
     console.log('meow');
     console.log('hm1', usersData, 'hm2', rolesData);
     if (usersData) {
+      console.log('hm3', usersData, 'hm4', rolesData);
       const formattedData = usersData.allUsers.map((user, index) => {
         return {
           id: index + 1,
           email: user.email,
           name: user.name,
-          // role: formatRole(user.role),
           role: user.role,
           typename: user.__typename,
           isChecked: false,
@@ -88,11 +89,79 @@ const App = () => {
       });
       setAllUsersData(formattedData);
     }
-
+    console.log('hm4', usersData, 'hm5', rolesData);
     if (rolesData) {
       setAllRoles(rolesData.__type.enumValues);
     }
-  }, [usersData]);
+    console.log('hm6', usersData, 'hm7', rolesData);
+  }, [usersData, rolesData]);
+
+  // useEffect(() => {
+  //   // resetUsers(true);
+  //   console.log('meow');
+  //   console.log('hm1', usersData, 'hm2', rolesData);
+  //   if (usersData && rolesData) {
+  //     console.log('hm3', usersData, 'hm4', rolesData);
+  //     const formattedData = usersData.allUsers.map((user, index) => {
+  //       return {
+  //         id: index + 1,
+  //         email: user.email,
+  //         name: user.name,
+  //         // role: formatRole(user.role),
+  //         role: user.role,
+  //         typename: user.__typename,
+  //         isChecked: false,
+  //       };
+  //     });
+  //     setAllUsersData(formattedData);
+  //     setAllRoles(rolesData.__type.enumValues);
+  //   }
+  //   // console.log('hm3', usersData, 'hm4', rolesData);
+  //   // if (rolesData) {
+  //   //   setAllRoles(rolesData.__type.enumValues);
+  //   // }
+  //   console.log('hm5', usersData, 'hm6', rolesData);
+  // }, [usersData, rolesData]);
+
+  // useEffect(() => {
+  //   // resetUsers(true);
+  //   console.log('hm1', usersData, 'hm2', rolesData);
+  //   const setData = async () => {
+  //     // try {
+
+  //     const users = await usersData;
+  //     // console.log('usersQueryData', usersQueryData);
+  //     const roles = await rolesData;
+  //     // console.log('rolesQueryData', usersQueryData);
+  //     // console.log('users', users, 'roles', roles);
+  //     console.log('hm3', usersData, 'hm4', rolesData);
+
+  //     if (users && roles) {
+  //       return handleDataStuff(users, roles);
+  //     }
+
+  //     // } catch (error) {
+  //     //   console.log('error', error);
+  //     // setError('Uh oh! Something went wrong, please try again later.');
+  //     // }
+  //   };
+  //   setData();
+  // }, [usersData, rolesData]);
+
+  // const handleDataStuff = (users, roles) => {
+  //   const formattedData = users.allUsers.map((user, index) => {
+  //     return {
+  //       id: index + 1,
+  //       email: user.email,
+  //       name: user.name,
+  //       role: user.role,
+  //       typename: user.__typename,
+  //       isChecked: false,
+  //     };
+  //   });
+  //   setAllUsersData(formattedData);
+  //   setAllRoles(roles);
+  // };
 
   if (usersLoading || rolesLoading) {
     return <p>Loading...</p>;
