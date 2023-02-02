@@ -1,0 +1,10 @@
+{
+  "prettier.prettierPath": "",
+  "prettier.singleQuote": true,
+  "prettier.bracketSameLine": false,
+  "prettier.configPath": ".prettierrc",
+  "prettier.jsxSingleQuote": true,
+  "prettier.requireConfig": true,
+  "prettier.singleAttributePerLine": false,
+  "prettier.useEditorConfig": false
+}
