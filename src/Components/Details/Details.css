@@ -1,43 +1,28 @@
 .details-container {
   display: flex;
-  /* border: 2px solid pink; */
   width: 100%;
   justify-content: space-between;
-  /* align-content: center; */
   border-top: 1px solid #e5e5e5;
-  /* height: 60vh; */
 }
 
 .name-article,
 .role-article {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid mediumspringgreen; */
   width: 60%;
-  /* height: 100vh; */
   margin-top: 1.5em;
 }
 
 .role-article {
   border-left: 1px solid #e5e5e5;
   height: 50vh;
-  /* display: flex;
-  justify-content: center; */
-  /* padding: .5em; */
-  /* width: 40%; */
   padding-left: 1.2em;
 }
 
 .radio-label {
   padding: 0.2em 0px 0.3em 0.2em;
   font-size: 0.83em;
-  /* display: flex;
-  align-items: center; */
 }
-
-/* .role-input {
-  margin: none; 
-} */
 
 .name-input-label,
 .role-input-label {
@@ -45,7 +30,6 @@
   letter-spacing: 0.14px;
   color: #333;
   font-weight: 500;
-  /* padding-top: 1.5em; */
   padding-bottom: 0.5em;
 }
 
