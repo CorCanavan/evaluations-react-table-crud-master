@@ -81,6 +81,7 @@ const App = () => {
           email: user.email,
           name: user.name,
           role: formatRole(user.role),
+          enumRole: user.role,
           typename: user.__typename,
           isChecked: false
         }
@@ -135,6 +136,8 @@ const App = () => {
 
   const handleEditUser = (name) => {
     const findUserByName = allUsersData.find(user => user.name === name)
+    findUserByName.role = findUserByName.enumRole
+    console.log("findUserByName", findUserByName)
     setUserToEdit(findUserByName)
     history.push(`user/${findUserByName.email}`);
   }

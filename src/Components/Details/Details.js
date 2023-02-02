@@ -20,7 +20,7 @@ const Details = ({ setUserToEdit, userToEdit, allRoles, formatRole}) => {
           type="radio"
           name="role"
           value={enumRole.name}
-          defaultChecked={userToEdit.role === formatRole(enumRole.name)}
+          defaultChecked={userToEdit.enumRole === enumRole.name}
           onChange={(e) => handleChange(e)}
         />
         {formatRole(enumRole.name)}
