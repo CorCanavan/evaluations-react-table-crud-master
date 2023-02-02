@@ -80,8 +80,8 @@ const App = () => {
           id: index + 1,
           email: user.email,
           name: user.name,
-          role: formatRole(user.role),
-          enumRole: user.role,
+          // role: formatRole(user.role),
+          role: user.role,
           typename: user.__typename,
           isChecked: false
         }
@@ -136,7 +136,7 @@ const App = () => {
 
   const handleEditUser = (name) => {
     const findUserByName = allUsersData.find(user => user.name === name)
-    findUserByName.role = findUserByName.enumRole
+    // findUserByName.role = findUserByName.enumRole
     console.log("findUserByName", findUserByName)
     setUserToEdit(findUserByName)
     history.push(`user/${findUserByName.email}`);
@@ -161,7 +161,7 @@ const App = () => {
         return {
           ...user,
           name: userToEdit.name,
-          role: formatRole(userToEdit.role),
+          role: userToEdit.role,
           // isChecked: userToEdit.isChecked
         }
       } else {
@@ -187,6 +187,7 @@ const App = () => {
               allUsersData={allUsersData} 
               handleCheck={handleCheck} 
               handleEditUser={handleEditUser} 
+              formatRole={formatRole}
             />
           </section>
         }}

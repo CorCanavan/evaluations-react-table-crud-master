@@ -1,7 +1,7 @@
 import React from 'react';
 import './Row.css';
 
-const Row = ({ id, email, name, role, isChecked, handleCheck, handleEditUser }) => {
+const Row = ({ id, email, name, role, isChecked, handleCheck, handleEditUser, formatRole }) => {
 
   return (
     <tr key={email} className="row-wrapper">
@@ -16,7 +16,7 @@ const Row = ({ id, email, name, role, isChecked, handleCheck, handleEditUser }) 
         </label>
       </td>
       <td className="name" onClick={()=> handleEditUser(name)}>{name}</td>
-      <td>{role}</td>
+      <td>{formatRole(role)}</td>
     </tr>
 
   )
