@@ -71,9 +71,10 @@ const App = () => {
   };
 
   useEffect(() => {
-    resetUsers(true);
+    // resetUsers(true);
     console.log('meow');
-    if (usersData && rolesData) {
+    console.log('hm1', usersData, 'hm2', rolesData);
+    if (usersData) {
       const formattedData = usersData.allUsers.map((user, index) => {
         return {
           id: index + 1,
@@ -86,6 +87,9 @@ const App = () => {
         };
       });
       setAllUsersData(formattedData);
+    }
+
+    if (rolesData) {
       setAllRoles(rolesData.__type.enumValues);
     }
   }, [usersData]);
