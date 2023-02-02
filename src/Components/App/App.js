@@ -73,10 +73,7 @@ const App = () => {
 
   useEffect(() => {
     // resetUsers(true);
-    console.log('meow');
-    console.log('hm1', usersData, 'hm2', rolesData);
     if (usersData) {
-      console.log('hm3', usersData, 'hm4', rolesData);
       const formattedData = usersData.allUsers.map((user, index) => {
         return {
           id: index + 1,
@@ -89,79 +86,10 @@ const App = () => {
       });
       setAllUsersData(formattedData);
     }
-    console.log('hm4', usersData, 'hm5', rolesData);
     if (rolesData) {
       setAllRoles(rolesData.__type.enumValues);
     }
-    console.log('hm6', usersData, 'hm7', rolesData);
   }, [usersData, rolesData]);
-
-  // useEffect(() => {
-  //   // resetUsers(true);
-  //   console.log('meow');
-  //   console.log('hm1', usersData, 'hm2', rolesData);
-  //   if (usersData && rolesData) {
-  //     console.log('hm3', usersData, 'hm4', rolesData);
-  //     const formattedData = usersData.allUsers.map((user, index) => {
-  //       return {
-  //         id: index + 1,
-  //         email: user.email,
-  //         name: user.name,
-  //         // role: formatRole(user.role),
-  //         role: user.role,
-  //         typename: user.__typename,
-  //         isChecked: false,
-  //       };
-  //     });
-  //     setAllUsersData(formattedData);
-  //     setAllRoles(rolesData.__type.enumValues);
-  //   }
-  //   // console.log('hm3', usersData, 'hm4', rolesData);
-  //   // if (rolesData) {
-  //   //   setAllRoles(rolesData.__type.enumValues);
-  //   // }
-  //   console.log('hm5', usersData, 'hm6', rolesData);
-  // }, [usersData, rolesData]);
-
-  // useEffect(() => {
-  //   // resetUsers(true);
-  //   console.log('hm1', usersData, 'hm2', rolesData);
-  //   const setData = async () => {
-  //     // try {
-
-  //     const users = await usersData;
-  //     // console.log('usersQueryData', usersQueryData);
-  //     const roles = await rolesData;
-  //     // console.log('rolesQueryData', usersQueryData);
-  //     // console.log('users', users, 'roles', roles);
-  //     console.log('hm3', usersData, 'hm4', rolesData);
-
-  //     if (users && roles) {
-  //       return handleDataStuff(users, roles);
-  //     }
-
-  //     // } catch (error) {
-  //     //   console.log('error', error);
-  //     // setError('Uh oh! Something went wrong, please try again later.');
-  //     // }
-  //   };
-  //   setData();
-  // }, [usersData, rolesData]);
-
-  // const handleDataStuff = (users, roles) => {
-  //   const formattedData = users.allUsers.map((user, index) => {
-  //     return {
-  //       id: index + 1,
-  //       email: user.email,
-  //       name: user.name,
-  //       role: user.role,
-  //       typename: user.__typename,
-  //       isChecked: false,
-  //     };
-  //   });
-  //   setAllUsersData(formattedData);
-  //   setAllRoles(roles);
-  // };
 
   if (usersLoading || rolesLoading) {
     return <p>Loading...</p>;
@@ -208,8 +136,6 @@ const App = () => {
 
   const handleEditUser = (name) => {
     const findUserByName = allUsersData.find((user) => user.name === name);
-    // findUserByName.role = findUserByName.enumRole
-    console.log('findUserByName', findUserByName);
     setUserToEdit(findUserByName);
     history.push(`user/${findUserByName.email}`);
   };
@@ -223,18 +149,14 @@ const App = () => {
       name: userToEdit.name,
       role: userToEdit.role,
     };
-    // updateUser({ variables: { email: userToEdit.email, newAttributes: userAttrInput }, refetchQueries: [{query: ALL_USERS_QUERY}] })
 
     updateUser({ variables: { email: userToEdit.email, newAttributes: userAttrInput } });
-
-    console.log('allUsers1', allUsersData);
     const updatedAllUsers = allUsersData.map((user) => {
       if (user.email === userToEdit.email) {
         return {
           ...user,
           name: userToEdit.name,
           role: userToEdit.role,
-          // isChecked: userToEdit.isChecked
         };
       } else {
         return user;
@@ -242,7 +164,6 @@ const App = () => {
     });
     setAllUsersData(updatedAllUsers);
     clearUserToEdit();
-    console.log('allUsers2', allUsersData);
   };
 
   return (
