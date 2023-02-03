@@ -1,53 +1,11 @@
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Header from '../Header/Header';
 import Container from '../Container/Container';
 import Details from '../Details/Details';
 import { Route, useHistory } from 'react-router-dom';
-
-const ALL_USERS_QUERY = gql`
-  query {
-    allUsers {
-      email
-      name
-      role
-    }
-  }
-`;
-
-const DELETE_USERS = gql`
-  mutation DeleteUsers($emails: [ID]!) {
-    deleteUsers(emails: $emails)
-  }
-`;
-
-const RESET_USERS = gql`
-  mutation ResetUsers {
-    resetUsers
-  }
-`;
-
-const ROLES_QUERY = gql`
-  query {
-    __type(name: "Role") {
-      name
-      enumValues {
-        name
-      }
-    }
-  }
-`;
-
-const UPDATE_USER = gql`
-  mutation UpdateUser($email: ID!, $newAttributes: UserAttributesInput!) {
-    updateUser(email: $email, newAttributes: $newAttributes) {
-      name
-      role
-    }
-  }
-`;
+import { ALL_USERS_QUERY, DELETE_USERS, RESET_USERS, ROLES_QUERY, UPDATE_USER } from '../Queries';
 
 const App = () => {
   const { loading: usersLoading, error: usersError, data: usersData } = useQuery(ALL_USERS_QUERY);
