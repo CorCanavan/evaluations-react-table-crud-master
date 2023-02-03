@@ -2,7 +2,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import env from './env.js';
+import env from './env';
 import App from './Components/App/App';
 import { BrowserRouter } from 'react-router-dom';
 
