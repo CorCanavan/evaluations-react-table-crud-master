@@ -5,13 +5,12 @@ import Header from '../Header/Header';
 import Container from '../Container/Container';
 import Details from '../Details/Details';
 import { Route, useHistory } from 'react-router-dom';
-import { ALL_USERS_QUERY, DELETE_USERS, ROLES_QUERY, UPDATE_USER, RESET_USERS } from '../Queries';
+import { ALL_USERS_QUERY, DELETE_USERS, ROLES_QUERY, UPDATE_USER } from '../Queries';
 
 const App = () => {
   const { loading: usersLoading, error: usersError, data: usersData } = useQuery(ALL_USERS_QUERY);
   const { loading: rolesLoading, error: rolesError, data: rolesData } = useQuery(ROLES_QUERY);
   const [deleteUsers, { error: deleteUsersError }] = useMutation(DELETE_USERS);
-  const [resetUsers] = useMutation(RESET_USERS);
   const [updateUser, { error: updateUserError }] = useMutation(UPDATE_USER);
   const [allUsersData, setAllUsersData] = useState([]);
   const [allRoles, setAllRoles] = useState([]);
@@ -30,7 +29,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    resetUsers(true);
     if (usersData) {
       const formattedData = usersData.allUsers.map((user, index) => {
         return {
