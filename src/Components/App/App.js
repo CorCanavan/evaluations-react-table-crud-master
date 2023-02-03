@@ -39,7 +39,7 @@ const App = () => {
           name: user.name,
           role: user.role,
           typename: user.__typename,
-          isChecked: false,
+          isChecked: false
         };
       });
       setAllUsersData(formattedData);
@@ -67,7 +67,7 @@ const App = () => {
       if (user.id === id) {
         const updatedUser = {
           ...user,
-          isChecked: !user.isChecked,
+          isChecked: !user.isChecked
         };
         return updatedUser;
       } else {
@@ -101,7 +101,7 @@ const App = () => {
   const handleUpdatedUser = () => {
     const userAttrInput = {
       name: userToEdit.name,
-      role: userToEdit.role,
+      role: userToEdit.role
     };
     updateUser({ variables: { email: userToEdit.email, newAttributes: userAttrInput } });
     const updatedAllUsers = allUsersData.map((user) => {
@@ -109,7 +109,7 @@ const App = () => {
         return {
           ...user,
           name: userToEdit.name,
-          role: userToEdit.role,
+          role: userToEdit.role
         };
       } else {
         return user;
