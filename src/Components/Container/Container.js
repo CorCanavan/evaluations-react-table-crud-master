@@ -2,9 +2,8 @@ import React from 'react';
 import './Container.css';
 import Row from '../Row/Row.js';
 
-const Container = ({ allUsersData, handleCheck, handleEditUser, formatRole}) => {
-
-  const allUsersRows = allUsersData.map(user => {
+const Container = ({ allUsersData, handleCheck, handleEditUser, formatRole }) => {
+  const allUsersRows = allUsersData.map((user) => {
     return (
       <Row
         key={user.id}
@@ -12,14 +11,13 @@ const Container = ({ allUsersData, handleCheck, handleEditUser, formatRole}) => 
         email={user.email}
         name={user.name}
         role={user.role}
-        // enumRole={user.enumRole}
         handleCheck={handleCheck}
         handleEditUser={handleEditUser}
         isChecked={user.isChecked}
         formatRole={formatRole}
       />
-    )
-  })
+    );
+  });
 
   return (
     <section className="container">
@@ -31,12 +29,10 @@ const Container = ({ allUsersData, handleCheck, handleEditUser, formatRole}) => 
             <th>ROLE</th>
           </tr>
         </thead>
-        <tbody>
-          {allUsersRows}
-        </tbody>
+        <tbody>{allUsersRows}</tbody>
       </table>
     </section>
-  )
-}
+  );
+};
 
 export default Container;

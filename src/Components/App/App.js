@@ -5,7 +5,7 @@ import Header from '../Header/Header';
 import Container from '../Container/Container';
 import Details from '../Details/Details';
 import { Route, useHistory } from 'react-router-dom';
-import { ALL_USERS_QUERY, DELETE_USERS, RESET_USERS, ROLES_QUERY, UPDATE_USER } from '../Queries';
+import { ALL_USERS_QUERY, DELETE_USERS, ROLES_QUERY, UPDATE_USER, RESET_USERS } from '../Queries';
 
 const App = () => {
   const { loading: usersLoading, error: usersError, data: usersData } = useQuery(ALL_USERS_QUERY);
@@ -30,7 +30,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    // resetUsers(true);
+    resetUsers(true);
     if (usersData) {
       const formattedData = usersData.allUsers.map((user, index) => {
         return {
