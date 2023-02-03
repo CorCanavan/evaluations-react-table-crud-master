@@ -103,7 +103,6 @@ const App = () => {
       name: userToEdit.name,
       role: userToEdit.role,
     };
-
     updateUser({ variables: { email: userToEdit.email, newAttributes: userAttrInput } });
     const updatedAllUsers = allUsersData.map((user) => {
       if (user.email === userToEdit.email) {
