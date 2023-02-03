@@ -9,11 +9,10 @@ table {
 
 th {
   text-align: left;
-  color: #777; 
-  font-size: .8em;
+  color: #777;
+  font-size: 0.8em;
   font-weight: 500;
   height: 2.3em;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Nue", san-serif;
 }
 
 .header-border {

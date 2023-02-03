@@ -1,17 +1,16 @@
 import React from 'react';
 import './Details.css';
 
-const Details = ({ setUserToEdit, userToEdit, allRoles, formatRole}) => {
-
+const Details = ({ setUserToEdit, userToEdit, allRoles, formatRole }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUserToEdit(prevState => ({
+    setUserToEdit((prevState) => ({
       ...prevState,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
-  const roleRadioButtons = allRoles.map(enumRole => {
+  const roleRadioButtons = allRoles.map((enumRole) => {
     return (
       <label className="radio-label" key={formatRole(enumRole.name)}>
         <input
@@ -20,36 +19,32 @@ const Details = ({ setUserToEdit, userToEdit, allRoles, formatRole}) => {
           type="radio"
           name="role"
           value={enumRole.name}
-          defaultChecked={userToEdit.role === formatRole(enumRole.name)}
+          defaultChecked={userToEdit.role === enumRole.name}
           onChange={(e) => handleChange(e)}
         />
         {formatRole(enumRole.name)}
       </label>
-    )
-  })
+    );
+  });
 
   return (
     <section className="details-container">
       <article className="name-article">
-        <label className="name-input-label">
-          Name
-        </label>
-          <input className="name-input"
-            name="name"
-            type="text"
-            defaultValue={userToEdit.name}
-            onChange={(e) => handleChange(e)}
-          />
+        <label className="name-input-label">Name</label>
+        <input
+          className="name-input"
+          name="name"
+          type="text"
+          defaultValue={userToEdit.name}
+          onChange={(e) => handleChange(e)}
+        />
       </article>
       <article className="role-article">
-        <label className="role-input-label">
-          Role
-        </label>
-          {roleRadioButtons}
+        <label className="role-input-label">Role</label>
+        {roleRadioButtons}
       </article>
     </section>
-  )
-}
-
+  );
+};
 
 export default Details;
