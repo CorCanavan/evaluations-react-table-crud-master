@@ -10,14 +10,14 @@ import { ALL_USERS_QUERY, DELETE_USERS, RESET_USERS, ROLES_QUERY, UPDATE_USER } 
 const App = () => {
   const { loading: usersLoading, error: usersError, data: usersData } = useQuery(ALL_USERS_QUERY);
   const { loading: rolesLoading, error: rolesError, data: rolesData } = useQuery(ROLES_QUERY);
+  const [deleteUsers, { error: deleteUsersError }] = useMutation(DELETE_USERS);
+  const [resetUsers] = useMutation(RESET_USERS);
+  const [updateUser, { error: updateUserError }] = useMutation(UPDATE_USER);
   const [allUsersData, setAllUsersData] = useState([]);
   const [allRoles, setAllRoles] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [userToEdit, setUserToEdit] = useState({});
-  const [error, setError] = useState('');
-  const [deleteUsers] = useMutation(DELETE_USERS);
-  const [resetUsers] = useMutation(RESET_USERS);
-  const [updateUser] = useMutation(UPDATE_USER);
+  const [isError, setIsError] = useState(false);
   const history = useHistory();
 
   const formatRole = (enumRole) => {
@@ -50,15 +50,11 @@ const App = () => {
   }, [usersData, rolesData]);
 
   if (usersLoading || rolesLoading) {
-    return <p>Loading...</p>;
+    return <p className="loading">Loading...</p>;
   }
 
-  if (usersError) {
-    return <p>Error: {JSON.stringify(usersError)}</p>;
-  }
-
-  if (rolesError) {
-    return <p>Error: {JSON.stringify(rolesError)}</p>;
+  if (usersError || rolesError || deleteUsersError || updateUserError) {
+    setIsError(true);
   }
 
   const handleSelectedUsers = (revisedUsers) => {
@@ -126,6 +122,7 @@ const App = () => {
 
   return (
     <main>
+      {isError && <p className="error-msg">Uh oh! Something went wrong. Please try again.</p>}
       <Route
         exact
         path="/"
